@@ -23,3 +23,4 @@ extension Acronyms:SQLiteModel{
 
 extension Acronyms:Content{}
 extension Acronyms:Migration{}
+extension Acronyms:Parameter{}
