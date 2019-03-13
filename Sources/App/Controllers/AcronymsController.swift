@@ -10,6 +10,13 @@ struct AcronymsController:RouteCollection{
         acronymsRoute.get(Acronyms.parameter, use: getAcronymHandler)
         acronymsRoute.delete(Acronyms.parameter, use: deleteHandler)
         acronymsRoute.put(Acronyms.parameter, use: updateAcronym)
+        acronymsRoute.get(Acronyms.parameter,"user", use: getUserHandler)
+    }
+    
+    func getUserHandler(_ req:Request) throws -> Future<User>{
+        return try req.parameters.next(Acronyms.self).flatMap(to: User.self){
+            $0.user.get(on: req)
+        }
     }
     
     func getAcronymHandler(_ req: Request) throws ->Future<Acronyms>{

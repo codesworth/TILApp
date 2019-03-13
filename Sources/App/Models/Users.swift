@@ -23,3 +23,9 @@ extension User:Content{}
 extension User:Migration{}
 extension User:Parameter{}
 
+extension User{
+    
+    var acronyms:Children<User,Acronyms>{
+        return children(\.userID)
+    }
+}

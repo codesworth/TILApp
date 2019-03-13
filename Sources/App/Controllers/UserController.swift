@@ -11,6 +11,14 @@ struct UserController:RouteCollection{
         userRoutes.get(User.parameter, use: getSingle)
         userRoutes.put(User.parameter, use: updateHandler)
         userRoutes.delete(User.parameter, use: delete)
+        userRoutes.get(User.parameter,"acronyms", use: getAcronymsHandler)
+    }
+    
+    
+    func getAcronymsHandler(_ req:Request) throws ->Future<[Acronyms]>{
+        return try req.parameters.next(User.self).flatMap(to: [Acronyms].self){
+           try $0.acronyms.query(on: req).all()
+        }
     }
     
     func getAllUsers(_ req:Request)throws ->Future<[User]>{

@@ -5,10 +5,12 @@ final class Acronyms:Codable{
     var id:Int?
     var short:String
     var long:String
+    var userID:User.ID
     
-    init(short:String, long:String) {
+    init(short:String, long:String, userID:User.ID) {
         self.long = long
         self.short = short
+        self.userID = userID
     }
 }
 
@@ -24,3 +26,11 @@ extension Acronyms:SQLiteModel{
 extension Acronyms:Content{}
 extension Acronyms:Migration{}
 extension Acronyms:Parameter{}
+
+
+extension Acronyms{
+    
+    var user:Parent<Acronyms, User>{
+        return parent(\.userID)
+    }
+}
