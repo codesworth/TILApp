@@ -1,10 +1,11 @@
 import FluentSQLite
 import Vapor
+import Foundation
 
 
 final class User:Codable{
     
-    var id:Int?
+    var id:UUID?
     var name:String
     var username:String
     
@@ -17,7 +18,7 @@ final class User:Codable{
 }
 
 
-extension User:SQLiteModel{}
+extension User:SQLiteUUIDModel{}
 extension User:Content{}
 extension User:Migration{}
 extension User:Parameter{}
