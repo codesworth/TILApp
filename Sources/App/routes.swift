@@ -20,4 +20,6 @@ public func routes(_ router: Router) throws {
     
     let controller = AcronymsController()
     try router.register(collection: controller)
+    let userController = UserController()
+    try router.register(collection: userController)
 }
