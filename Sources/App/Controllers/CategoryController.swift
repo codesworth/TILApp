@@ -12,6 +12,7 @@ struct CategoryController:RouteCollection{
         catRoute.post(Category.self, use: createHandler)
         catRoute.put(Category.parameter, use: update)
         catRoute.delete(Category.parameter, use: delete)
+        catRoute.get(Category.parameter,"acronyms", use: getAcronymsHandler)
     }
     
     
@@ -41,5 +42,11 @@ struct CategoryController:RouteCollection{
             oldcat.name = newcat.name
             return oldcat.save(on: req)
         })
+    }
+    
+    func getAcronymsHandler(_ req:Request)throws -> Future<[Acronyms]>{
+        return try req.parameters.next(Category.self).flatMap(to: [Acronyms].self){
+            try $0.acronyms.query(on:req).all()
+        }
     }
 }
