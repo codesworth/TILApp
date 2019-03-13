@@ -22,4 +22,6 @@ public func routes(_ router: Router) throws {
     try router.register(collection: controller)
     let userController = UserController()
     try router.register(collection: userController)
+    let catController = CategoryController()
+    try router.register(collection: catController)
 }
