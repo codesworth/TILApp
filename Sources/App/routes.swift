@@ -24,4 +24,6 @@ public func routes(_ router: Router) throws {
     try router.register(collection: userController)
     let catController = CategoryController()
     try router.register(collection: catController)
+    let webController = WebsiteController()
+    try router.register(collection: webController)
 }

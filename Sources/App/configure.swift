@@ -1,11 +1,11 @@
 import FluentMySQL
 import Vapor
-
+import Leaf
 /// Called before your application initializes.
 public func configure(_ config: inout Config, _ env: inout Environment, _ services: inout Services) throws {
     // Register providers first
     try services.register(FluentMySQLProvider())
-
+    try services.register(LeafProvider())
     // Register routes to the router
     let router = EngineRouter.default()
     try routes(router)
@@ -33,4 +33,6 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     migrations.add(model: Category.self, database: .mysql)
     migrations.add(model: AcronymCategoryPivot.self, database: .mysql)
     services.register(migrations)
+    
+    config.prefer(LeafRenderer.self, for: ViewRenderer.self)
 }
