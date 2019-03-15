@@ -1,4 +1,4 @@
-import FluentSQLite
+import FluentMySQL
 import Vapor
 
 final class Acronyms:Codable{
@@ -16,7 +16,7 @@ final class Acronyms:Codable{
 
 
 
-extension Acronyms:SQLiteModel{
+extension Acronyms:MySQLModel{
     
 //    typealias Database = SQLiteDatabase
 //    typealias ID = Int
