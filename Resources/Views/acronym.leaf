@@ -6,7 +6,7 @@
 
     <h2>#(acronym.long)</h2>
 
-    <p>Created by <a href="/users/#(user.is)">#(user.name)</a> whose user name is #(acronym.long)</p>
+    <p>Created by <a href="/users/#(user.id)">#(user.name)</a> whose user name is #(acronym.long)</p>
 }
 
 #embed("base")
